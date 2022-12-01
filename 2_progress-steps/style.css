@@ -66,13 +66,16 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: border 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
     background-color: white;
     z-index: 2;
 }
 
 .circle.active {
     border: 2px solid rgb(37, 37, 170);
+    background-color:  rgb(123, 123, 175);
+    color: white;
+    font-weight: bold;
 }
 
 button {
