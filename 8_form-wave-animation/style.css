@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    background-color: rgb(82, 68, 173);
+}
+
+input {
+    border: 0;
+    border-bottom: 1px solid #fafafa;
+    padding: 0.2rem;
+    margin-bottom: 2.5rem;
+    width: 100%;
+    background: transparent;
+    color: rgb(255 255 255 / 0.8);
+}
+
+input:focus {
+    outline: none;
+    border-bottom-color: lightblue;
+}
+
+button {
+    width: 100%;
+    border: none;
+    border-radius: 0.2rem;
+    background-color: rgb(148, 143, 247);
+    color: white;
+    padding: 0.4rem 1rem;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: rgb(148 143 247 / 0.8);
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(0 0 0 / 0.3);
+    color: rgb(255 255 255 / 0.8);
+    width: 50vw;
+    padding: 2.5rem 2.5rem 2.5rem 2.5rem;
+}
+
+.title {
+    margin-bottom: 2rem;
+}
+
+.input-container {
+    width: 100%;
+    position: relative;
+}
+
+label {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    pointer-events: none;
+}
+
+label span {
+    transition: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    /* this is critical for the effect! */
+    display: inline-block; 
+}
+
+input:focus + label span {
+    color: lightblue;
+    transform: translateY(-20px);
+}
