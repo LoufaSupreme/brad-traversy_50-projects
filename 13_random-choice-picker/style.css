@@ -14,4 +14,49 @@ body {
     align-items: center;
     height: 100vh;
     overflow: hidden;
+    background-color: darkslategray;
+}
+
+.container {
+    width: min(75vw, 400px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+p {
+    color: #fafafa;
+    text-align: center;
+    padding: 0 2rem;
+}
+
+textarea {
+    width: 100%;
+    color: black;
+    border: none;
+    min-height: 100px;
+    border-radius: 0.3rem;
+    padding: 0.5rem;
+}
+
+.choice-container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 0.4rem;
+}
+
+.choice {
+    padding: 0.4rem 1.2rem;
+    color: #fafafa;
+    background-color: lightcoral;
+    border-radius: 0.5rem;
+    box-shadow: 4px 4px 16px rgb(0 0 0 / 0.2);
+}
+
+.choice.selected {
+    /* font-weight: bold; */
+    background-color: rgb(16, 16, 71);
 }
