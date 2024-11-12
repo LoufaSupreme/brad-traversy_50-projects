@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+  --light-clr: 255,255,255;
+  --dark-clr: 0,0,0;
+  --accent-clr: 255,140,0; /* orange */
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    background-color: rgb(var(--light-clr));
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+button {
+  background-color: rgb(var(--dark-clr));
+  color: rgb(var(--light-clr));
+  cursor: pointer;
+  padding: 1em;
+  border-radius: 0.5rem;
+  border: none;
+}
+
+button:hover {
+  opacity: 0.76;
+}
+
+.clock {
+  height: 250px;
+  width: 250px;
+  border: 1px solid black;
+  border-radius: 100%;
+  position: relative;
+}
+
+.hour {
+  --width: 0;
+  --height: 50px;
+
+  height: var(--height);
+  border: 2px solid rgb(var(--dark-clr));
+  position: absolute;
+  left: 50%;
+  top: calc(50% - var(--height));
+  transform-origin: bottom;
+  transform: rotate(20deg);
+}
+
+.minute {
+  --width: 0;
+  --height: 80px;
+
+  height: var(--height);
+  border: 2px solid rgb(var(--dark-clr));
+  position: absolute;
+  left: 50%;
+  top: calc(50% - var(--height));
+  transform-origin: bottom;
+  transform: rotate(-20deg);
+}
+
+.second {
+  --width: 0;
+  --height: 100px;
+
+  height: var(--height);
+  border: 2px solid rgb(var(--accent-clr));
+  position: absolute;
+  left: 50%;
+  top: calc(50% - var(--height));
+  transform-origin: bottom;
+  transform: rotate(75deg);
+}
+
+.center {
+  --size: 8px;
+  width: var(--size);
+  height: var(--size);
+  border-radius: 100%;
+  border: 1px solid rgb(var(--accent-clr));
+  background-color: rgb(var(--dark-clr));
+  z-index: 10;
+  position: absolute;
+  left: 50%;
+  top: calc(50% - var(--size)/2);
+}
+
+.time {
+  color: rgb(var(--dark-clr));
+  font-weight: bold;
+  font-size: 3rem;
+}
+
+.date {
+  color: rgba(var(--dark-clr), 0.5);
+  text-transform: uppercase;
+  font-weight: lighter;
+}
