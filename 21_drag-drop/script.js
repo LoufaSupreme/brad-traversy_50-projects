@@ -71,9 +71,11 @@ draggables.forEach(draggable => {
 })
 
 squares.forEach(square => {
+  square.addEventListener('dragenter', (e) => {
+    square.classList.add('hover');
+  })
   square.addEventListener('dragover', (e) => {
     e.preventDefault(); // this is critical
-    square.classList.add('hover');
   })
   square.addEventListener('dragleave', (e) => {
     square.classList.remove('hover');
