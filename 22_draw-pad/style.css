@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+  --light-clr: 200,200,200;
+  --dark-clr: 30,30,30;
+  --accent-clr: 255,140,0; /* orange */
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    background-color: rgb(var(--dark-clr));
+    position: relative;
+}
+
+.drawpad {
+  display: flex;
+  flex-direction: column;
+  width: 40vw;
+  height: 70vh;
+}
+
+canvas {
+  background-color: rgb(var(--light-clr));
+  width: 100%;
+  height: auto;
+}
+
+menu {
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+  background-color: rgb(var(--accent-clr));
+  color: rgb(var(--dark-clr));
+  padding: 1rem;
+}
+
+button {
+  padding: 0.6rem 1rem;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.fontsize {
+  font-size: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+input[type="color"] {
+  height: 100%;
+  padding: 3px;
+}
+
+button.clear {
+  margin-left: auto;
+}
