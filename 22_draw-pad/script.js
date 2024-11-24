@@ -18,19 +18,27 @@ function initializeCanvas() {
 }
 
 function resizeCanvas() {
+  // resizing canvas (when screen size changes) causes all art to be lost by default. Can combat this by making temp canvas:
+  // make temp canvas
   const temp_canvas = document.createElement('canvas');
   const temp_ctx = temp_canvas.getContext('2d');
 
+  // set width/height so that drawing scale is accurate
   temp_canvas.width = canvas.offsetWidth;
   temp_canvas.height = canvas.offsetHeight;
+  // pull background colour from CSS custom variable
   temp_ctx.fillStyle = `rgb(${getComputedStyle(document.body).getPropertyValue('--light-clr')})`;
+  // draw the current canvas onto the temp canvas
   temp_ctx.fillRect(0,0,canvas.offsetWidth, canvas.offsetHeight);
   temp_ctx.drawImage(canvas, 0, 0);
   
+  // resize the original canvas
   canvas.width = canvas.offsetWidth; // necessary for accurate drawing
   canvas.height = canvas.offsetHeight; // you can't rely on css height/width for some reason
+  // draw temp canvas onto original canvas
   ctx.drawImage(temp_canvas, 0, 0);
 
+  // reset colour and stroke size
   initializeCanvas();
 }
 
