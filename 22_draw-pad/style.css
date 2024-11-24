@@ -27,13 +27,13 @@ body {
   display: flex;
   flex-direction: column;
   width: 40vw;
-  height: 70vh;
+  height: 40vh;
 }
 
 canvas {
   background-color: rgb(var(--light-clr));
   width: 100%;
-  height: auto;
+  height: 100%;
 }
 
 menu {

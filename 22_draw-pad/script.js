@@ -4,14 +4,35 @@ const increaseBtn = document.querySelector(".increase");
 const decreaseBtn = document.querySelector(".decrease");
 const colorInput = document.querySelector('input[type="color"]');
 const fontSize = document.querySelector('.fontsize');
-canvas.width = canvas.offsetWidth; // necessary for accurate drawing
-canvas.height = canvas.offsetHeight * 3; // you can't rely on css height/width for some reason
 
 const ctx = canvas.getContext('2d');
-ctx.lineWidth = 5;
-fontSize.innerText = ctx.lineWidth;
-ctx.strokeStyle = 'black';
+
+let lineWidth = 5;
+let strokeColor = 'black';
 let pos = {x: 0, y: 0};
+
+function initializeCanvas() {
+  ctx.lineWidth = lineWidth;
+  fontSize.innerText = lineWidth;
+  ctx.strokeStyle = strokeColor;
+}
+
+function resizeCanvas() {
+  const temp_canvas = document.createElement('canvas');
+  const temp_ctx = temp_canvas.getContext('2d');
+
+  temp_canvas.width = canvas.offsetWidth;
+  temp_canvas.height = canvas.offsetHeight;
+  temp_ctx.fillStyle = `rgb(${getComputedStyle(document.body).getPropertyValue('--light-clr')})`;
+  temp_ctx.fillRect(0,0,canvas.offsetWidth, canvas.offsetHeight);
+  temp_ctx.drawImage(canvas, 0, 0);
+  
+  canvas.width = canvas.offsetWidth; // necessary for accurate drawing
+  canvas.height = canvas.offsetHeight; // you can't rely on css height/width for some reason
+  ctx.drawImage(temp_canvas, 0, 0);
+
+  initializeCanvas();
+}
 
 function draw(e) {
   if (e.buttons !== 1) return; // left mouse btn must be clicked
@@ -40,13 +61,14 @@ function increaseSize() {
   const amt = 1;
   
   if (ctx.lineWidth + amt <= max) {
-    ctx.lineWidth += amt;
-    fontSize.innerText = ctx.lineWidth;
+    lineWidth += amt;
+    initializeCanvas();
   }
 }
 
 function changeColor(e) {
-  ctx.strokeStyle = e.target.value;
+  strokeColor = e.target.value;
+  initializeCanvas();
 }
 
 function decreaseSize() {
@@ -54,8 +76,8 @@ function decreaseSize() {
   const amt = 1;
   
   if (ctx.lineWidth - amt >= min) {
-    ctx.lineWidth -= amt;
-    fontSize.innerText = ctx.lineWidth;
+    lineWidth -= amt;
+    initializeCanvas();
   }
 }
 
@@ -67,3 +89,6 @@ clearBtn.addEventListener('click', clearCanvas);
 increaseBtn.addEventListener('click', increaseSize);
 decreaseBtn.addEventListener('click', decreaseSize);
 colorInput.addEventListener('change', changeColor);
+
+window.addEventListener('resize', resizeCanvas);
+resizeCanvas();
