@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+  --light-clr: 200,200,200;
+  --dark-clr: 30,30,30;
+  --accent-clr: 255,140,0; /* orange */
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    background-color: rgb(var(--dark-clr));
+    position: relative;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.triangle {
+  width: 0;
+  height: 0;
+  position: absolute;
+  border: 50px solid transparent;
+}
+
+#triangle1 {
+  border-left-color: rgb(var(--light-clr)) ;
+  animation: rotate 8s ease-in-out 1s infinite;
+}
+
+#triangle2 {
+  border-right-color: rgb(var(--accent-clr));
+  transform: rotate(0);
+  animation: rotate 8s ease-in-out 0s infinite;
+}
+
+@keyframes rotate {
+  12.5% {
+    transform: rotate(90deg);
+  }
+  25% {
+    transform: rotate(90deg);
+  }
+  37.5% {
+    transform: rotate(180deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  62.5% {
+    transform: rotate(270deg);
+  }
+  75% {
+    transform: rotate(270deg);
+  }
+  87.5% {
+    transform: rotate(360deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
